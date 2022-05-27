@@ -2,7 +2,10 @@
 #define PUBLISHER_HPP
 #include <unistd.h>
 #include "rclcpp/rclcpp.hpp"
-#include "vicon_receiver/msg/position.hpp"
+// #include "vicon_receiver/msg/position.hpp"
+#include <tf2_ros/transform_broadcaster.h>
+#include <geometry_msgs/msg/transform_stamped.hpp>
+#include <geometry_msgs/msg/pose.hpp>
 
 // Struct used to hold segment data to transmit to the Publisher class.
 struct PositionStruct
@@ -21,7 +24,13 @@ struct PositionStruct
 class Publisher
 {
 private:
-    rclcpp::Publisher<vicon_receiver::msg::Position>::SharedPtr position_publisher_;
+    // rclcpp::Publisher<vicon_receiver::msg::Position>::SharedPtr position_publisher_;
+
+    std::shared_ptr<tf2_ros::TransformBroadcaster> tf_broadcaster;
+
+    rclcpp::Publisher<geometry_msgs::msg::Pose>::SharedPtr pose_publisher;
+
+    rclcpp::Clock::SharedPtr clock;
 
 public:
     bool is_ready = false;
