@@ -47,16 +47,16 @@ void Publisher::publish(PositionStruct p)
     pose_publisher->publish(msg);
 
     // Publish tf
-    geometry_msgs::msg::TransformStamped t;
-    t.header.frame_id = "world";
-    t.header.stamp = clock->now();
-    t.child_frame_id = p.segment_name;
-    t.transform.translation.x = p.translation[0] / 1000.0;
-    t.transform.translation.y = p.translation[1] / 1000.0;
-    t.transform.translation.z = p.translation[2] / 1000.0;
-    t.transform.rotation.x = p.rotation[0];
-    t.transform.rotation.y = p.rotation[1];
-    t.transform.rotation.z = p.rotation[2];
-    t.transform.rotation.w = p.rotation[3];
-    tf_broadcaster->sendTransform(t);
+    // geometry_msgs::msg::TransformStamped t;
+    // t.header.frame_id = "world";
+    // t.header.stamp = clock->now();
+    // t.child_frame_id = p.segment_name;
+    // t.transform.translation.x = p.translation[0] / 1000.0;
+    // t.transform.translation.y = p.translation[1] / 1000.0;
+    // t.transform.translation.z = p.translation[2] / 1000.0;
+    // t.transform.rotation.x = p.rotation[0];
+    // t.transform.rotation.y = p.rotation[1];
+    // t.transform.rotation.z = p.rotation[2];
+    // t.transform.rotation.w = p.rotation[3];
+    // tf_broadcaster->sendTransform(t);
 }
